@@ -9,22 +9,38 @@ name = "pixa-core"
 path = "core/main.rs"
 
 [workspace]
-members = [ "aggregator",
-    "telegram",
-]
+members = [ "aggregator", "entity", "telegram" , "migration", "utils" ]
 
 [workspace.dependencies]
-serde = "1.0.215"
+anyhow = "1.0.97"
+bs58 = "0.5.1"
+entity = { path = "entity" }
+sea-orm = { version = "1.1.2", features = [  ] }
+serde = { version = "1.0.215", features = ["derive"] }
+serde_json = "1.0.133" 
+solana-client = "2.2.2"
+solana-sdk = "2.2.2"
+sqlx = { version = "0.8", features = ["postgres", "runtime-tokio-native-tls"] }
 thiserror = "2.0.4"
+tokio = { version = "1.42.0", features = ["full"] }
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
+utils = { path = "utils" }
 
 [dependencies]
 #axum = "0.7.9"
+aggregator = { path = "aggregator" }
 axum = { version = "0.7.9", features = ["tracing", "tokio", "json", "http2"] }
 dotenv = "0.15.0"
-tokio = { version = "1.42.0", features = ["full"] }
-tower = "0.5.1"
+entity = { workspace = true }
+tokio = { workspace = true }
+tower = { version = "0.5.1", features = ["util", "timeout"] }
 tower-http = { version = "0.6.2", features = ["timeout", "trace"] }
-tracing = "0.1.41"
-tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
 telegram = { path = "telegram" }
-serde_json = "1.0.133"
+utils = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+sea-orm =  { workspace = true }
+sqlx =  { workspace = true }

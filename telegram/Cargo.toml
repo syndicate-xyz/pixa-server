@@ -4,5 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-serde = { workspace = true }
+anyhow = { workspace = true }
+axum = { version = "0.7.9", features = ["tracing", "tokio", "json", "http2"] }
+#teloxide = { version = "0.14.1", features = ["macros"] }
+teloxide = { git = "https://github.com/teloxide/teloxide.git", features = ["macros"] }
 thiserror = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+url = "2.4.0"
+entity = { path = "../entity" }
+utils = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+sea-orm =  { workspace = true }
